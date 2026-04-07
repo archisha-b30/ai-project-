@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Traffic Control Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-traffic-light"></i>
+                <span>Traffic Control AI</span>
+            </div>
+            <div class="nav-status">
+                <span id="status-indicator" class="status-dot"></span>
+                <span id="status-text">Active</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard">
+        <div class="header">
+            <h1>AI Traffic Congestion Control System</h1>
+            <p class="subtitle">Real-time traffic monitoring and signal optimization</p>
+            <div class="control-buttons">
+                <button class="btn btn-primary" onclick="refreshDashboard()">
+                    <i class="fas fa-sync-alt"></i> Refresh All
+                </button>
+                <button class="btn btn-secondary" onclick="toggleAutoRefresh()">
+                    <i class="fas fa-clock"></i> <span id="auto-refresh-text">Auto-Refresh: ON</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="grid-container">
+            <!-- Vehicle Detection Card -->
+            <div class="card">
+                <div class="card-header">
+                    <h2><i class="fas fa-car"></i> Vehicle Detection</h2>
+                    <button class="btn-icon" onclick="detect()"><i class="fas fa-redo"></i></button>
+                </div>
+                <div class="card-body">
+                    <div id="counts" class="vehicle-counts">
+                        <div class="loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Traffic Density Card -->
+            <div class="card">
+                <div class="card-header">
+                    <h2><i class="fas fa-chart-bar"></i> Traffic Density</h2>
+                </div>
+                <div class="card-body">
+                    <div id="densities" class="density-display">
+                        <div class="loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Predictions Card -->
+            <div class="card card-wide">
+                <div class="card-header">
+                    <h2><i class="fas fa-chart-line"></i> Traffic Flow Prediction</h2>
+                    <button class="btn-icon" onclick="predict()"><i class="fas fa-redo"></i></button>
+                </div>
+                <div class="card-body">
+                    <canvas id="predictionChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Signal Control Card -->
+            <div class="card">
+                <div class="card-header">
+                    <h2><i class="fas fa-signal"></i> Signal Control</h2>
+                    <button class="btn-icon" onclick="getSignal()"><i class="fas fa-redo"></i></button>
+                </div>
+                <div class="card-body">
+                    <div id="signal" class="signal-display">
+                        <div class="loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simulation Control Card -->
+            <div class="card">
+                <div class="card-header">
+                    <h2><i class="fas fa-cog"></i> Simulation Control</h2>
+                </div>
+                <div class="card-body">
+                    <button class="btn btn-success" onclick="step()">
+                        <i class="fas fa-forward"></i> Run Step
+                    </button>
+                    <div id="step-count" class="step-counter">Steps: 0</div>
+                </div>
+            </div>
+
+            <!-- Metrics Card -->
+            <div class="card card-wide">
+                <div class="card-header">
+                    <h2><i class="fas fa-tachometer-alt"></i> System Metrics</h2>
+                    <button class="btn-icon" onclick="getMetrics()"><i class="fas fa-redo"></i></button>
+                </div>
+                <div class="card-body">
+                    <div id="metrics" class="metrics-display">
+                        <div class="loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 AI Traffic Control System | Real-time Smart Traffic Management</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
