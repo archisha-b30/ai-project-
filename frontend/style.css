@@ -459,3 +459,371 @@ body {
 .card {
     animation: fade-in 0.3s ease;
 }
+
+/* New Features Styles */
+
+/* Alerts Banner */
+.alerts-banner {
+    background: var(--danger-color);
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.alerts-list {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.alert-item {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.alert-badge {
+    display: inline-block;
+    background: var(--danger-color);
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.badge {
+    display: inline-block;
+    background: var(--danger-color);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+/* Environmental Display */
+.environmental-display {
+    background: var(--light-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    display: grid;
+    gap: 1rem;
+}
+
+.eco-score {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.eco-score-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.eco-score-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.eco-stat {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.eco-stat:last-child {
+    border-bottom: none;
+}
+
+.eco-label {
+    color: var(--text-secondary);
+}
+
+.eco-value {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* V2I Display */
+.v2i-display {
+    background: var(--light-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    display: grid;
+    gap: 1rem;
+}
+
+.v2i-stat {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.v2i-icon {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.v2i-info {
+    flex: 1;
+}
+
+.v2i-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.v2i-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Incidents Display */
+.incidents-display {
+    background: var(--light-bg);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.no-incidents {
+    text-align: center;
+    color: var(--success-color);
+    font-weight: 600;
+    padding: 1rem;
+}
+
+.incident-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    border-left: 4px solid var(--danger-color);
+    margin-bottom: 0.75rem;
+}
+
+.incident-title {
+    font-weight: 700;
+    color: var(--danger-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.incident-detail {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Time-Based Display */
+.time-display {
+    background: var(--light-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    display: grid;
+    gap: 1rem;
+}
+
+.time-period {
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    border-left: 4px solid var(--warning-color);
+}
+
+.time-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.time-period-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.time-multiplier {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--warning-color);
+}
+
+.time-strategy {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+}
+
+/* Heatmap */
+.heatmap-container {
+    background: var(--light-bg);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+#heatmapCanvas {
+    border-radius: 6px;
+    background: white;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header h2 {
+    margin: 0;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+.close-modal:hover {
+    color: var(--text-primary);
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.alerts-detail {
+    display: grid;
+    gap: 1rem;
+}
+
+.alert-detail-item {
+    background: var(--light-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--warning-color);
+}
+
+.alert-detail-item.critical {
+    border-left-color: var(--danger-color);
+}
+
+.alert-detail-item.info {
+    border-left-color: var(--primary-color);
+}
+
+.alert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 0.5rem;
+}
+
+.alert-type {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.alert-severity {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    background: var(--warning-color);
+    color: white;
+}
+
+.alert-severity.critical {
+    background: var(--danger-color);
+}
+
+.alert-severity.info {
+    background: var(--primary-color);
+}
+
+.alert-message {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.alert-time {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Button Info */
+.btn-info {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-info:hover {
+    background: var(--primary-dark);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .alerts-banner {
+        margin: -1rem -1rem 1rem -1rem;
+        border-radius: 0;
+    }
+    
+    .modal-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+}

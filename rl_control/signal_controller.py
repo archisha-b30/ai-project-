@@ -38,12 +38,61 @@ class RLSignalController:
         state = self.get_state(lane_counts, current_signal)
         return self.choose_action(state)
 
-    def calculate_reward(self, lane_counts, action, served_vehicles):
-        total_queue = sum(lane_counts.values())
+    def calculate_reward(self, lane_counts, action, served_vehicles, eco_mode=False, avg_wait_time=0):
+        """
+        Enhanced multi-objective reward function.
+        Balances: traffic flow, congestion, wait time, environmental impact, and fairness.
+        
+        Args:
+            lane_counts: vehicles per lane
+            action: (lane, duration) tuple
+            served_vehicles: number of vehicles that passed through
+            eco_mode: if True, prioritize environmental impact
+            avg_wait_time: average waiting time
+        """
+        total_queue = sum(lane_counts.values()) if isinstance(lane_counts, dict) else lane_counts
         green_lane, duration = action
-        reward = served_vehicles * 2 - total_queue - duration * 0.05
-        if total_queue > 30:
+        
+        # Base reward: vehicles served
+        reward = served_vehicles * 2.5
+        
+        # Penalty: total queue length
+        queue_penalty = total_queue * 0.3
+        reward -= queue_penalty
+        
+        # Penalty: signal duration (encourage shorter cycles where possible)
+        duration_penalty = duration * 0.05
+        reward -= duration_penalty
+        
+        # Penalty: average waiting time
+        wait_penalty = min(avg_wait_time * 0.1, 10)
+        reward -= wait_penalty
+        
+        # Environmental bonus (in eco mode)
+        if eco_mode:
+            # Reward for reducing idle time
+            reward += (60 - duration) * 0.15
+        
+        # Fairness penalty: distribute green time fairly across lanes
+        if isinstance(lane_counts, dict):
+            lane_values = list(lane_counts.values())
+            if lane_values:
+                avg_queue = sum(lane_values) / len(lane_values)
+                max_queue = max(lane_values)
+                if max_queue > avg_queue * 2:
+                    fairness_bonus = 2  # Reward if selecting high-queue lane
+                    reward += fairness_bonus
+        
+        # Heavy congestion penalty
+        if total_queue > 40:
+            reward -= 8
+        elif total_queue > 30:
             reward -= 5
+        
+        # Reward for good traffic flow
+        if served_vehicles > 15:
+            reward += 3
+        
         return reward
 
     def train(self, env, episodes=500, max_steps=50):
